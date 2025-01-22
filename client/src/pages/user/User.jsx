@@ -4,10 +4,9 @@ import { Link, useParams } from 'react-router-dom';
 const User = () => {
 	const [user, setUser] = useState();
 	const { id } = useParams();
-	// console.log(id);
 
 	useEffect(() => {
-		getUsersById(id, setUser);
+		getUserById(id, setUser);
 	}, []);
 
 	return (
@@ -19,6 +18,7 @@ const User = () => {
 						<h2>{user.name}</h2>
 						<p>{user.email}</p>
 					</div>
+
 					<form onSubmit={event => updateUser(event, id, user, setUser)}>
 						<div>
 							<label htmlFor='name'>Name</label>
@@ -49,7 +49,7 @@ const User = () => {
 	);
 };
 
-const getUsersById = async (id, setUser) => {
+const getUserById = async (id, setUser) => {
 	const response = await fetch(`http://localhost:3000/${id}`);
 	const user = await response.json();
 	setUser(user);

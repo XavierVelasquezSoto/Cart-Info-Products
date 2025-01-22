@@ -1,8 +1,8 @@
 const express = require("express");
-const userRoutes = require("./routes/users.routes");
+const productRoutes = require("./routes/productRoutes");
 const app = express();
 const cors = require("cors");
-const port = 3000;
+const port = 4000;
 
 const corsOptions = {
   origin: "*", // Orígenes permitidos
@@ -13,7 +13,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());
-app.use("/", userRoutes);
+app.use("/", productRoutes);
 
 app.listen(port, () => {
   console.log("Server is running on port" + port);
