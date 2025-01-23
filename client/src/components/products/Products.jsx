@@ -52,6 +52,7 @@ const getAllProducts = async setProducts => {
 	const response = await fetch('http://localhost:4000');
 	const products = await response.json();
 	setProducts(products);
+	console.log(products);
 };
 
 const createProduct = async (event, setProducts) => {

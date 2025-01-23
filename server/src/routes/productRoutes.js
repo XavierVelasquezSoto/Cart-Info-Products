@@ -3,7 +3,7 @@ const productRoutes = express.Router();
 const fs = require("fs");
 const path = require("path");
 
-const productFile = path.resolve(__dirname, "..//../data/cartProducts.json");
+const productFile = path.resolve(__dirname, "../../data/cartProducts.json");
 
 // Get -> Obtener Datos
 // Post -> Enviar Datos
@@ -19,6 +19,7 @@ productRoutes.get("/", (req, res) => {
       return res.send("Error al leer el producto");
     }
     const dataJson = JSON.parse(data);
+    console.log(dataJson);
     return res.json(dataJson);
   });
 });
