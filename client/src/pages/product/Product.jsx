@@ -51,7 +51,7 @@ const Product = () => {
 							/>
 						</div>
 
-						<input type='submit' value='Create product' />
+						<input type='submit' value='Update product' />
 					</form>
 				</>
 			)}

@@ -26,6 +26,10 @@ const Products = () => {
 						name='descriptionProduct'
 					/>
 				</div>
+				<div>
+					<label htmlFor='price'>Price</label>
+					<input type='text' id='price' name='price' />
+				</div>
 				<input type='submit' value='Create Product' />
 			</form>
 			{products.length > 0 &&
