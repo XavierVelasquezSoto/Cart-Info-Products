@@ -12,7 +12,7 @@ const Products = () => {
 	return (
 		<>
 			<h1>PRODUCTS</h1>
-			{products.length === 0 && <h2>No Users</h2>}
+			{products.length === 0 && <h2>No Products</h2>}
 			<form onSubmit={event => createProduct(event, setProducts)}>
 				<div>
 					<label htmlFor='name'>Name</label>
@@ -28,15 +28,18 @@ const Products = () => {
 				</div>
 				<input type='submit' value='Create Product' />
 			</form>
-			{products.length === 0 &&
+			{products.length > 0 &&
 				products.map(product => (
 					<div key={product.productId}>
 						<h2>{product.name}</h2>
 						<p>{product.descriptionProduct}</p>
+						<p>{product.price}</p>
 						<Link to={`/product/${product.productId}`}>
-							<button>View User Info</button>
+							<button>View Product Info</button>
 						</Link>
-						<button onClick={() => deleteUser(product.productId, setProducts)}>
+						<button
+							onClick={() => deleteProduct(product.productId, setProducts)}
+						>
 							Delete Product
 						</button>
 					</div>
@@ -53,7 +56,7 @@ const getAllProducts = async setProducts => {
 
 const createProduct = async (event, setProducts) => {
 	event.preventDefault();
-	const newUser = {
+	const newProduct = {
 		productId: v4(),
 		name: event.target.name.value,
 		descriptionProduct: event.target.descriptionProduct.value,
@@ -61,7 +64,7 @@ const createProduct = async (event, setProducts) => {
 	};
 	const response = await fetch('http://localhost:4000', {
 		method: 'POST',
-		body: JSON.stringify(newUser),
+		body: JSON.stringify(newProduct),
 		headers: {
 			'Content-Type': 'application/json'
 		}
@@ -70,7 +73,7 @@ const createProduct = async (event, setProducts) => {
 	setProducts(products);
 };
 
-const deleteUser = async (id, setProducts) => {
+const deleteProduct = async (id, setProducts) => {
 	const response = await fetch(`http://localhost:4000/${id}`, {
 		method: 'DELETE'
 	});
