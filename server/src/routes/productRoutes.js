@@ -32,7 +32,7 @@ productRoutes.get("/:id", (req, res) => {
     const dataJson = JSON.parse(data);
     const productFound = dataJson.find((product) => product.productId === id);
     if (!productFound) {
-      return res.send("producto no encontrado");
+      return res.send("Producto no encontrado");
     }
 
     return res.json(productFound);
